@@ -14,6 +14,9 @@ public class Accident {
         this.text = text;
         this.address = address;
     }
+    public Accident(){
+
+    }
 
     public int getId() {
         return id;

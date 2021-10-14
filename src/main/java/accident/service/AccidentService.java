@@ -11,14 +11,19 @@ public class AccidentService {
 
     private AccidentMem accidentMem;
 
-    public AccidentService(AccidentMem accidentMem) {
-        this.accidentMem = accidentMem;
+    public AccidentService(AccidentMem accident) {
+        this.accidentMem = accident;
     }
 
     public void addAccident(Accident accident) {
-        accidentMem.add(accident);
+       accidentMem.add(accident);
     }
+
     public Collection<Accident> allValues() {
         return accidentMem.findAll();
+    }
+
+    public Accident findById(int id) {
+        return accidentMem.findById(id);
     }
 }
