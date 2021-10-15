@@ -10,9 +10,8 @@
     <title>Create</title>
 </head>
 <body>
-
-<form  action="<c:url value='/save'/>" method='POST'>
-    <p>Редактирование инцидента</p>
+<p>Редактирование инцидента</p>
+<form  action="<c:url value='/save?id=${accident.id}'/>" method='POST'>
     <table>
         <tr>
             <td>Название:</td>
