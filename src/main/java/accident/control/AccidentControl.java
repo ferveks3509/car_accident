@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class AccidentControl {
@@ -24,12 +26,14 @@ public class AccidentControl {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("types", accidentService.getAllTypes());
+        model.addAttribute("rules", accidentService.getAllRules());
         return "accident/create";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Accident accident) {
+    public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
         accidentService.addAccident(accident);
+        String[] ids = req.getParameterValues("rIds");
         return "redirect:/";
     }
 

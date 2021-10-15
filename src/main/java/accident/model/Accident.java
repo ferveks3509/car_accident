@@ -9,13 +9,15 @@ public class Accident {
     private String address;
 
     private AccidentType accidentType;
+    private Rule rules;
 
-    public Accident(int id, String name, String text, String address, AccidentType accidentType) {
+    public Accident(int id, String name, String text, String address, AccidentType accidentType, Rule rule) {
         this.id = id;
         this.name = name;
         this.text = text;
         this.address = address;
         this.accidentType = accidentType;
+        this.rules = rule;
     }
 
     public Accident(int id, String name, String text, String address) {
