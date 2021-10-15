@@ -11,6 +11,7 @@
     <title>Accident</title>
 </head>
 <body>
+
 <div class="container">
     <a href="<c:url value='/create'/>">Добавить инцидент</a>
     <table class="table table-dark table-striped">

@@ -3,7 +3,6 @@ package accident.service;
 import accident.model.Accident;
 import accident.store.AccidentMem;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 
 @Service

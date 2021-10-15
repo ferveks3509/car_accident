@@ -10,6 +10,7 @@
     <title>Create</title>
 </head>
 <body>
+
 <form  action="<c:url value='/save'/>" method='POST'>
     <p>Создание инцидента</p>
     <table>

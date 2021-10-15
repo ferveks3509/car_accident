@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AccidentControl {
+
     private final AccidentService accidentService;
 
     public AccidentControl(AccidentService accidentService) {

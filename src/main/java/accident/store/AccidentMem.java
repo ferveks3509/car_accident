@@ -2,7 +2,6 @@ package accident.store;
 
 import accident.model.Accident;
 import org.springframework.stereotype.Repository;
-
 import java.util.Collection;
 import java.util.HashMap;
 
