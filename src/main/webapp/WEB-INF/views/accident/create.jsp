@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,8 +12,16 @@
 </head>
 <body>
 <p>Создание инцидента</p>
-<form  action="<c:url value='/save'/>" method='POST'>
+<form action="<c:url value='/save'/>" method='POST'>
+    <td>Тип:</td>
     <table>
+        <tr>
+            <select name="type.id">
+                <c:forEach var="type" items="${types}">
+                    <option value="${type.id}">${type.name}</option>
+                </c:forEach>
+            </select>
+        </tr>
         <tr>
             <td>Название:</td>
             <td><input type='text' name='name'></td>
@@ -26,7 +35,7 @@
             <td><input type='text' name='address'></td>
         </tr>
         <tr>
-            <td colspan='2'><input name="submit" type="submit" value="Сохранить" /></td>
+            <td colspan='2'><input name="submit" type="submit" value="Сохранить"/></td>
         </tr>
     </table>
 </form>

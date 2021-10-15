@@ -1,6 +1,7 @@
 package accident.control;
 
 import accident.model.Accident;
+import accident.model.AccidentType;
 import accident.service.AccidentService;
 import org.springframework.stereotype.Controller;
 
@@ -21,7 +22,8 @@ public class AccidentControl {
     }
 
     @GetMapping("/create")
-    public String create() {
+    public String create(Model model) {
+        model.addAttribute("types", accidentService.getAllTypes());
         return "accident/create";
     }
 

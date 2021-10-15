@@ -1,6 +1,7 @@
 package accident.service;
 
 import accident.model.Accident;
+import accident.model.AccidentType;
 import accident.store.AccidentMem;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
@@ -28,5 +29,9 @@ public class AccidentService {
 
     public void update(Accident accident) {
         accidentMem.update(accident);
+    }
+
+    public Collection<AccidentType> getAllTypes() {
+        return accidentMem.accidentTypesAll();
     }
 }
