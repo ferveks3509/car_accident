@@ -40,6 +40,10 @@ public class AccidentService {
         return accidentMem.findByIdAT(id);
     }
 
+    public Rule findByIdRule(int id) {
+        return accidentMem.findByIdRule(id);
+    }
+
     public Collection<Rule> getAllRules() {
         return accidentMem.accidentRuleAll();
     }

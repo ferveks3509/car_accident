@@ -63,6 +63,10 @@ public class AccidentMem {
         return types.get(id);
     }
 
+    public Rule findByIdRule(int id) {
+        return rules.get(id);
+    }
+
     public Collection<Rule> accidentRuleAll(){
         return rules.values();
     }
