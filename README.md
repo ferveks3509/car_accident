@@ -1,3 +1,4 @@
+[![Build Status](https://app.travis-ci.com/ferveks3509/car_accident.svg?branch=master)](https://app.travis-ci.com/ferveks3509/car_accident)
 # car_accident
 1. В системе существуют две роли. Обычные пользователи и автоинспекторы. 
    Пользователь добавляет описание автонарушение. В заявлении указывает: адрес
