@@ -1,7 +1,6 @@
 package accident.control;
 
 import accident.model.Accident;
-import accident.model.AccidentType;
 import accident.service.AccidentService;
 import org.springframework.stereotype.Controller;
 
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-
 
 @Controller
 public class AccidentControl {
@@ -40,6 +38,8 @@ public class AccidentControl {
     @GetMapping("/edit")
     public String edit(@RequestParam("id") int id, Model model) {
         model.addAttribute("accident", accidentService.findById(id));
+        model.addAttribute("types", accidentService.getAllTypes());
+        model.addAttribute("rules", accidentService.getAllRules());
         return "accident/edit";
     }
 }

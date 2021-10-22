@@ -19,9 +19,6 @@ public class AccidentMem {
     private final Map<Integer, Rule> rules = new HashMap<>();
 
     public AccidentMem() {
-        add(new Accident(1, "name1", "speed", "Kirov-1"));
-        add(new Accident(2, "name2", "dtp", "Kirov-2"));
-
         types.put(1, AccidentType.of(1, "Две машины"));
         types.put(2, AccidentType.of(2, "Машина и человек"));
         types.put(3, AccidentType.of(3, "Машина и велосипед"));
@@ -29,6 +26,14 @@ public class AccidentMem {
         rules.put(1, Rule.of(1, "Статья. 1"));
         rules.put(2, Rule.of(2, "Статья. 2"));
         rules.put(3, Rule.of(3, "Статья. 3"));
+
+        Set<Rule> ruleSet1 = new LinkedHashSet<>();
+        ruleSet1.add(rules.get(1));
+        Set<Rule> ruleSet2 = new LinkedHashSet<>();
+        ruleSet2.add(rules.get(2));
+
+        add(new Accident(1, "name1", "speed", "Kirov-1", types.get(1), ruleSet1));
+        add(new Accident(2, "name2", "dtp", "Kirov-2", types.get(2), ruleSet2));
     }
 
     public void add(Accident accident) {
