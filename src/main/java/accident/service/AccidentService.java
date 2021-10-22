@@ -36,6 +36,10 @@ public class AccidentService {
         return accidentMem.accidentTypesAll();
     }
 
+    public AccidentType findByIdAT(int id) {
+        return accidentMem.findByIdAT(id);
+    }
+
     public Collection<Rule> getAllRules() {
         return accidentMem.accidentRuleAll();
     }

@@ -58,6 +58,11 @@ public class AccidentMem {
     public Collection<AccidentType> accidentTypesAll() {
         return types.values();
     }
+
+    public AccidentType findByIdAT(int id) {
+        return types.get(id);
+    }
+
     public Collection<Rule> accidentRuleAll(){
         return rules.values();
     }
