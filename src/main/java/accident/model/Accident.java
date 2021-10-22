@@ -1,6 +1,7 @@
 package accident.model;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Accident {
     private int id;
@@ -9,9 +10,9 @@ public class Accident {
     private String address;
 
     private AccidentType accidentType;
-    private Rule rules;
+    private Set<Rule> rules;
 
-    public Accident(int id, String name, String text, String address, AccidentType accidentType, Rule rule) {
+    public Accident(int id, String name, String text, String address, AccidentType accidentType, Set<Rule> rule) {
         this.id = id;
         this.name = name;
         this.text = text;
@@ -60,6 +61,22 @@ public class Accident {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public AccidentType getAccidentType() {
+        return accidentType;
+    }
+
+    public void setAccidentType(AccidentType accidentType) {
+        this.accidentType = accidentType;
+    }
+
+    public Set<Rule> getRules() {
+        return rules;
+    }
+
+    public void setRules(Set<Rule> rules) {
+        this.rules = rules;
     }
 
     @Override
