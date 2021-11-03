@@ -1,6 +1,7 @@
 package accident.control;
 
 import accident.model.Accident;
+import accident.model.AccidentType;
 import accident.model.Rule;
 import accident.service.AccidentService;
 import org.springframework.stereotype.Controller;
@@ -32,16 +33,15 @@ public class AccidentControl {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Accident accident,
-                       @RequestParam(value = "type.id") int id,
-                       HttpServletRequest req) {
+    public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
         String[] ids = req.getParameterValues("rIds");
         Set<Rule> rsl = new LinkedHashSet<>();
         for(String el : ids) {
             rsl.add(accidentService.findByIdRule(Integer.parseInt(el)));
         }
         accident.setRules(rsl);
-        accident.setAccidentType(accidentService.findByIdAT(id));
+        String[] accidentType = req.getParameterValues("type.id");
+        accidentService.setAccidentType(accident,Integer.parseInt(accidentType[0]));
         accidentService.addAccident(accident);
         return "redirect:/";
     }

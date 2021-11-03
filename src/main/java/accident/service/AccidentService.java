@@ -28,16 +28,8 @@ public class AccidentService {
         return accidentMem.findById(id);
     }
 
-    public void update(Accident accident) {
-        accidentMem.update(accident);
-    }
-
     public Collection<AccidentType> getAllTypes() {
         return accidentMem.accidentTypesAll();
-    }
-
-    public AccidentType findByIdAT(int id) {
-        return accidentMem.findByIdAT(id);
     }
 
     public Rule findByIdRule(int id) {
@@ -46,5 +38,9 @@ public class AccidentService {
 
     public Collection<Rule> getAllRules() {
         return accidentMem.accidentRuleAll();
+    }
+
+    public void setAccidentType(Accident accident,int typeId) {
+        accidentMem.setAccidentsType(accident,typeId);
     }
 }

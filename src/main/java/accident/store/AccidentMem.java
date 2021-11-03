@@ -43,6 +43,12 @@ public class AccidentMem {
       accidents.put(accident.getId(), accident);
     }
 
+    public Accident setAccidentsType(Accident accident,int idType) {
+        AccidentType acType = findByIdAccidentType(idType);
+        accident.setAccidentType(acType);
+        return accident;
+    }
+
     public Collection<Accident> findAll() {
         return  accidents.values();
     }
@@ -51,15 +57,11 @@ public class AccidentMem {
         return accidents.get(id);
     }
 
-    public void update(Accident accident) {
-        accidents.replace(accident.getId(), accident);
-    }
-
     public Collection<AccidentType> accidentTypesAll() {
         return types.values();
     }
 
-    public AccidentType findByIdAT(int id) {
+    public AccidentType findByIdAccidentType(int id) {
         return types.get(id);
     }
 
