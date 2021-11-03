@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Controller
 public class AccidentControl {
@@ -35,14 +33,8 @@ public class AccidentControl {
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
         String[] ids = req.getParameterValues("rIds");
-        Set<Rule> rsl = new LinkedHashSet<>();
-        for(String el : ids) {
-            rsl.add(accidentService.findByIdRule(Integer.parseInt(el)));
-        }
-        accident.setRules(rsl);
-        String[] accidentType = req.getParameterValues("type.id");
-        accidentService.setAccidentType(accident,Integer.parseInt(accidentType[0]));
-        accidentService.addAccident(accident);
+        String[] idT = req.getParameterValues("type.id");
+        accidentService.addAccident(accident, ids, idT);
         return "redirect:/";
     }
 

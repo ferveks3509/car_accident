@@ -31,22 +31,20 @@ public class AccidentMem {
         ruleSet1.add(rules.get(1));
         Set<Rule> ruleSet2 = new LinkedHashSet<>();
         ruleSet2.add(rules.get(2));
-
-        add(new Accident(1, "name1", "speed", "Kirov-1", types.get(1), ruleSet1));
-        add(new Accident(2, "name2", "dtp", "Kirov-2", types.get(2), ruleSet2));
+        accidents.put(1 ,new Accident(1, "name1", "speed", "Kirov-1", types.get(1), ruleSet1));
+        accidents.put(2 ,new Accident(2, "name2", "dtp", "Kirov-2", types.get(2), ruleSet2));
     }
 
-    public void add(Accident accident) {
-      if (accident.getId() == 0) {
-          accident.setId(ACCIDENT_ID.incrementAndGet());
-      }
-      accidents.put(accident.getId(), accident);
-    }
-
-    public Accident setAccidentsType(Accident accident,int idType) {
-        AccidentType acType = findByIdAccidentType(idType);
-        accident.setAccidentType(acType);
-        return accident;
+    public void add(Accident accident, String[] ids, String[] idT) {
+        int id = accident.getId();
+        AccidentType accidentType = findByIdAccidentType(Integer.parseInt(idT[0]));
+        accident.setAccidentType(accidentType);
+        if (!accidents.containsKey(id)) {
+            id = ACCIDENT_ID.incrementAndGet();
+            accident.setId(id);
+        }
+        accident.setRules(getRulesAccident(ids));
+        accidents.put(accident.getId(), accident);
     }
 
     public Collection<Accident> findAll() {
@@ -71,5 +69,13 @@ public class AccidentMem {
 
     public Collection<Rule> accidentRuleAll(){
         return rules.values();
+    }
+
+    private Set<Rule> getRulesAccident(String[] ids) {
+        Set<Rule> rules = new LinkedHashSet<>();
+        for (String el : ids) {
+            rules.add(findByIdRule(Integer.parseInt(el)));
+        }
+        return rules;
     }
 }

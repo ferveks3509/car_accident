@@ -16,8 +16,8 @@ public class AccidentService {
         this.accidentMem = accident;
     }
 
-    public void addAccident(Accident accident) {
-       accidentMem.add(accident);
+    public void addAccident(Accident accident, String[] ids, String[] idT) {
+       accidentMem.add(accident, ids, idT);
     }
 
     public Collection<Accident> allValues() {
@@ -38,9 +38,5 @@ public class AccidentService {
 
     public Collection<Rule> getAllRules() {
         return accidentMem.accidentRuleAll();
-    }
-
-    public void setAccidentType(Accident accident,int typeId) {
-        accidentMem.setAccidentsType(accident,typeId);
     }
 }
