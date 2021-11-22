@@ -43,6 +43,10 @@ public class AccidentControl {
         model.addAttribute("types", accidentService.getAllAccidentType());
         model.addAttribute("rules", accidentService.getAllRules());
         model.addAttribute("accident", accidentService.findAccidentById(id));
+        //model.addAttribute("accident", accidentService.findById);
+        //model.addAttribute("accident", accidentService.findById(id));
+        //model.addAttribute("types", accidentService.getAllTypes());
+        //model.addAttribute("rules", accidentService.getAllRules());
         return "accident/edit";
     }
 }
