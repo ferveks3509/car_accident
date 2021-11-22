@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class IndexControl {
-
-
     private final AccidentService accidentService;
 
     public IndexControl(AccidentService accidentService) {
@@ -17,7 +15,7 @@ public class IndexControl {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("accidents", accidentService.allValues());
+        model.addAttribute("accidents", accidentService.getAll());
         return "index";
     }
 }

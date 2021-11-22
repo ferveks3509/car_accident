@@ -25,8 +25,8 @@ public class AccidentControl {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("types", accidentService.getAllTypes());
-        model.addAttribute("rules", accidentService.getAllRules());
+        model.addAttribute("rules",accidentService.getAllRules());
+        model.addAttribute("types", accidentService.getAllAccidentType());
         return "accident/create";
     }
 
@@ -40,9 +40,13 @@ public class AccidentControl {
 
     @GetMapping("/edit")
     public String edit(@RequestParam("id") int id, Model model) {
-        model.addAttribute("accident", accidentService.findById(id));
-        model.addAttribute("types", accidentService.getAllTypes());
+        model.addAttribute("types", accidentService.getAllAccidentType());
         model.addAttribute("rules", accidentService.getAllRules());
+        model.addAttribute("accident", accidentService.findAccidentById(id));
+        //model.addAttribute("accident", accidentService.findById);
+        //model.addAttribute("accident", accidentService.findById(id));
+        //model.addAttribute("types", accidentService.getAllTypes());
+        //model.addAttribute("rules", accidentService.getAllRules());
         return "accident/edit";
     }
 }
