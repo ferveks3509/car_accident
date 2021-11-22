@@ -18,7 +18,6 @@ create table accident_rule(
     accident_id int references accident(id),
     rule_id int references rule(id),
 )
-
 insert into type(name) values ('Две машины'),('Машина и человек'),('Машина и велосипед');
 insert into rule(name) values ('Статья. 1'),('Статья. 2'),('Статья. 3');
 insert into accident(name, text, address, type_id) values ('name1', 'desc1', 'address1', 1, 1);

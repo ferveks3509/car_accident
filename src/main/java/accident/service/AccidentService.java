@@ -21,9 +21,6 @@ public class AccidentService {
     public void addAccident(Accident accident, String[] ids, String[] idT) {
         accidentJdbcTemplate.save(accident, ids, idT);
     }
-    public void updateAccident(Accident accident, String[] ids, String[] idT) {
-        accidentJdbcTemplate.save(accident, ids, idT);
-    }
 
     public Accident findAccidentById(int id) {
         return accidentJdbcTemplate.findAccidentById(id);
@@ -36,6 +33,7 @@ public class AccidentService {
     public List<Rule> getAllRules() {
         return accidentJdbcTemplate.getAllRule();
     }
+
     public List<AccidentType> getAllAccidentType() {
         return accidentJdbcTemplate.getAllAccidentType();
     }

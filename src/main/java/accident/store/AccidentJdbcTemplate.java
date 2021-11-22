@@ -15,6 +15,7 @@ import java.util.Set;
 
 @Repository
 public class AccidentJdbcTemplate {
+
     private final JdbcTemplate jdbc;
 
     public AccidentJdbcTemplate(JdbcTemplate jdbc) {

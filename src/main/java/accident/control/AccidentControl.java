@@ -1,8 +1,6 @@
 package accident.control;
 
 import accident.model.Accident;
-import accident.model.AccidentType;
-import accident.model.Rule;
 import accident.service.AccidentService;
 import org.springframework.stereotype.Controller;
 
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -43,10 +40,6 @@ public class AccidentControl {
         model.addAttribute("types", accidentService.getAllAccidentType());
         model.addAttribute("rules", accidentService.getAllRules());
         model.addAttribute("accident", accidentService.findAccidentById(id));
-        //model.addAttribute("accident", accidentService.findById);
-        //model.addAttribute("accident", accidentService.findById(id));
-        //model.addAttribute("types", accidentService.getAllTypes());
-        //model.addAttribute("rules", accidentService.getAllRules());
         return "accident/edit";
     }
 }
