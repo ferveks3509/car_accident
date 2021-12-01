@@ -9,7 +9,7 @@ import java.util.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Repository
+
 public class AccidentMem {
     private final Map<Integer, Accident> accidents = new HashMap<>();
     private AtomicInteger ACCIDENT_ID = new AtomicInteger(2);

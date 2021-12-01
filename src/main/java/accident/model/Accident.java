@@ -1,15 +1,27 @@
 package accident.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
+@Table(name = "accident")
 public class Accident {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String text;
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "type_id")
     private AccidentType accidentType;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "accident_rule",
+            joinColumns = {@JoinColumn(name = "accident_id")},
+            inverseJoinColumns = {@JoinColumn(name = "rule_id")})
     private Set<Rule> rules;
 
     public Accident(int id, String name, String text, String address, AccidentType accidentType, Set<Rule> rule) {
@@ -27,7 +39,8 @@ public class Accident {
         this.text = text;
         this.address = address;
     }
-    public Accident(){
+
+    public Accident() {
 
     }
 
@@ -79,6 +92,10 @@ public class Accident {
         this.rules = rules;
     }
 
+    public void addRule(Rule rule) {
+        this.rules.add(rule);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,5 +107,17 @@ public class Accident {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, text, address);
+    }
+
+    @Override
+    public String toString() {
+        return "Accident{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", text='" + text + '\'' +
+                ", address='" + address + '\'' +
+                ", accidentType=" + accidentType +
+                ", rules=" + rules +
+                '}';
     }
 }
