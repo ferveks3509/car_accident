@@ -20,7 +20,7 @@ public class Accident {
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinTable(name = "accident_rule",
-            joinColumns = {@JoinColumn(name = "accident_id", updatable = false, insertable = false)},
+            joinColumns = {@JoinColumn(name = "accident_id", updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "rule_id", updatable = false)})
     private Set<Rule> rules;
 
