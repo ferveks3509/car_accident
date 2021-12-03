@@ -18,10 +18,10 @@ public class Accident {
     @JoinColumn(name = "type_id")
     private AccidentType accidentType;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinTable(name = "accident_rule",
-            joinColumns = {@JoinColumn(name = "accident_id")},
-            inverseJoinColumns = {@JoinColumn(name = "rule_id")})
+            joinColumns = {@JoinColumn(name = "accident_id", updatable = false, insertable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "rule_id", updatable = false)})
     private Set<Rule> rules;
 
     public Accident(int id, String name, String text, String address, AccidentType accidentType, Set<Rule> rule) {
@@ -97,7 +97,7 @@ public class Accident {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Accident accident = (Accident) o;
-        return id == accident.id && Objects.equals(name, accident.name) && Objects.equals(text, accident.text) && Objects.equals(address, accident.address);
+        return id == accident.id;
     }
 
     @Override
