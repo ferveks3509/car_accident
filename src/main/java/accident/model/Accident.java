@@ -22,15 +22,11 @@ public class Accident {
     @JoinColumn(name = "type_id")
     private AccidentType accidentType;
 
-    @OneToMany(cascade = CascadeType.PERSIST,orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinTable(name = "accident_rule",
             joinColumns = {@JoinColumn(name = "accident_id", updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "rule_id", updatable = false)})
-    private Set<Rule> rules;
-
-    {
-        rules = new HashSet<>(0);
-    }
+    private Set<Rule> rules = new HashSet<>();
 
     public Accident(int id, String name, String text, String address, AccidentType accidentType, Set<Rule> rule) {
         this.id = id;
