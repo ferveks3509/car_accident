@@ -1,6 +1,10 @@
 package accident.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,11 +22,15 @@ public class Accident {
     @JoinColumn(name = "type_id")
     private AccidentType accidentType;
 
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.PERSIST,orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinTable(name = "accident_rule",
             joinColumns = {@JoinColumn(name = "accident_id", updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "rule_id", updatable = false)})
     private Set<Rule> rules;
+
+    {
+        rules = new HashSet<>(0);
+    }
 
     public Accident(int id, String name, String text, String address, AccidentType accidentType, Set<Rule> rule) {
         this.id = id;
@@ -102,7 +110,7 @@ public class Accident {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, text, address);
+        return Objects.hash(id);
     }
 
     @Override

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.function.Function;
 
-@Repository
 public class AccidentHibernate {
     private final SessionFactory sf;
 
