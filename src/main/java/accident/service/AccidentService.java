@@ -29,9 +29,7 @@ public class AccidentService {
             rsl.add(findRuleById(Integer.parseInt(els)));
         }
         accident.setRules(rsl);
-        for (String elt : idt) {
-            accident.setAccidentType(findAccidentTypeById(Integer.parseInt(elt)));
-        }
+        accident.setAccidentType(findAccidentTypeById(Integer.parseInt(idt[0])));
         accidentRepository.save(accident);
     }
 
@@ -41,8 +39,7 @@ public class AccidentService {
     }
 
     public Rule findRuleById(int id) {
-        Rule rule = null;
-        rule = ruleRepository.findById(id).get();
+        Rule rule = ruleRepository.findById(id).get();
         return rule;
     }
 

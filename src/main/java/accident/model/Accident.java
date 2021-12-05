@@ -1,8 +1,5 @@
 package accident.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -22,7 +19,7 @@ public class Accident {
     @JoinColumn(name = "type_id")
     private AccidentType accidentType;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.PERSIST,orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinTable(name = "accident_rule",
             joinColumns = {@JoinColumn(name = "accident_id", updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "rule_id", updatable = false)})
@@ -94,6 +91,10 @@ public class Accident {
 
     public void setRules(Set<Rule> rules) {
         this.rules = rules;
+    }
+
+    public void addRule(Rule rule) {
+        this.rules.add(rule);
     }
 
     @Override
