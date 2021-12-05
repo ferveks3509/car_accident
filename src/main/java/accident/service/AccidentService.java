@@ -7,6 +7,7 @@ import accident.repository.AccidentRepository;
 import accident.repository.AccidentTypeRepository;
 import accident.repository.RuleRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -22,13 +23,11 @@ public class AccidentService {
         this.accidentTypeRepository = accidentTypeRepository;
         this.ruleRepository = ruleRepository;
     }
-
+    @Transactional
     public void addAccident(Accident accident, String[] ids, String[] idt) {
-        Set<Rule> rsl = new LinkedHashSet<>();
         for (String els : ids) {
-            rsl.add(findRuleById(Integer.parseInt(els)));
+            accident.addRule((findRuleById(Integer.parseInt(els))));
         }
-        accident.setRules(rsl);
         accident.setAccidentType(findAccidentTypeById(Integer.parseInt(idt[0])));
         accidentRepository.save(accident);
     }

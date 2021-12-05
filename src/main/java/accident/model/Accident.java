@@ -19,7 +19,7 @@ public class Accident {
     @JoinColumn(name = "type_id")
     private AccidentType accidentType;
 
-    @OneToMany(cascade = CascadeType.PERSIST,orphanRemoval = true, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinTable(name = "accident_rule",
             joinColumns = {@JoinColumn(name = "accident_id", updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "rule_id", updatable = false)})
