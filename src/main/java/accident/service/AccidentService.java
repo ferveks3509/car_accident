@@ -23,7 +23,7 @@ public class AccidentService {
         this.accidentTypeRepository = accidentTypeRepository;
         this.ruleRepository = ruleRepository;
     }
-    @Transactional
+
     public void addAccident(Accident accident, String[] ids, String[] idt) {
         for (String els : ids) {
             accident.addRule((findRuleById(Integer.parseInt(els))));

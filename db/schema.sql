@@ -17,7 +17,19 @@ create table accident_rule(
     id serial primary key,
     accident_id int references accident(id),
     rule_id int references rule(id),
-)
+);
+CREATE TABLE users (
+                       username VARCHAR(50) NOT NULL,
+                       password VARCHAR(100) NOT NULL,
+                       enabled boolean default true,
+                       PRIMARY KEY (username)
+);
+
+CREATE TABLE authorities (
+                             username VARCHAR(50) NOT NULL,
+                             authority VARCHAR(50) NOT NULL,
+                             FOREIGN KEY (username) REFERENCES users(username)
+);
 insert into type(name) values ('Две машины'),('Машина и человек'),('Машина и велосипед');
 insert into rule(name) values ('Статья. 1'),('Статья. 2'),('Статья. 3');
 insert into accident(name, text, address, type_id) values ('name1', 'desc1', 'address1', 1, 1);

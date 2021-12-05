@@ -1,6 +1,7 @@
 package accident;
 
 import accident.config.DataConfig;
+import accident.config.JdbcConfig;
 import accident.config.SecurityConfig;
 import accident.config.WebConfig;
 import org.springframework.web.WebApplicationInitializer;

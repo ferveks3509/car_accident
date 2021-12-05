@@ -13,7 +13,9 @@
 <body>
 
 <div class="container">
+    <div class="text-dark"> Login as :${user.username}</div>
     <a href="<c:url value='/create'/>">Добавить инцидент</a>
+
     <table class="table table-dark table-striped">
         <thead>
         <tr>
