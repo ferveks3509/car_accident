@@ -5,4 +5,9 @@
    , номер машины, описание нарушения и фотографию нарушения.
    У заявки есть статус: принята, отклонена, завершена. Главная страница - это поиск с таблицей.
 
-4. Почта: qq.ferveks@gmail.com
+2. Spring MVC
+3. Spring core (DI, IoC)
+4. Spring JDBC
+5. Spring Hibernate
+6. Spring Data JPA
+7. Spring Security
