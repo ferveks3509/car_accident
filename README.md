@@ -11,3 +11,10 @@
 5. Spring Hibernate
 6. Spring Data JPA
 7. Spring Security
+
+# регистрация
+ ![alt text](images/Screenshot_1.png)
+ # Все проишествия
+  ![alt text](images/Screenshot_2.png)
+  # Создание нового проишествия
+   ![alt text](images/Screenshot_3.png)
