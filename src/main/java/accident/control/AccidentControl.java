@@ -2,6 +2,7 @@ package accident.control;
 
 import accident.model.Accident;
 import accident.service.AccidentService;
+import accident.service.SimpleAccidentService;
 import accident.store.AccidentHibernate;
 import org.springframework.stereotype.Controller;
 
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class AccidentControl {
 
-    private final AccidentService accidentService;
+    private final SimpleAccidentService accidentService;
 
     public AccidentControl(AccidentService accidentService) {
         this.accidentService = accidentService;
